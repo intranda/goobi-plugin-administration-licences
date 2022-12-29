@@ -1,6 +1,9 @@
 <config_plugin>
 	
-	<url>http://localhost:7070/</url>
+	<!-- URL for the licence server application api -->
+	<url>http://localhost:7070/api</url>
+
+	<!-- Login and Password for the customer -->
 	<login>login</login>
 	<password>password</password>
 	

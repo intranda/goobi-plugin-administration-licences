@@ -63,7 +63,7 @@ public class LicencesAdministrationPlugin implements IAdministrationPlugin {
 		// send a GET request to localhost
 		try {
 			HttpResponse response;
-			response = Request.Get(url + "/api/contracts/")
+			response = Request.Get(url + "/contracts/")
 					.setHeader(HttpHeaders.AUTHORIZATION, "Basic " + auth)
 					.addHeader("accept", "application/json")
 					.useExpectContinue()
