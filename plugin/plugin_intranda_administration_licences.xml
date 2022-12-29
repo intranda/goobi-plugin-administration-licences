@@ -1,0 +1,7 @@
+<config_plugin>
+	
+	<url>http://localhost:7070/</url>
+	<login>login</login>
+	<password>password</password>
+	
+</config_plugin>
