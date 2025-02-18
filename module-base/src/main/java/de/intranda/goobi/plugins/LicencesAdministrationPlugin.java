@@ -28,9 +28,10 @@ import net.xeoh.plugins.base.annotations.PluginImplementation;
 @Log4j2
 public class LicencesAdministrationPlugin implements IAdministrationPlugin {
 
+    private static final long serialVersionUID = -6385569283262794220L;
     @Getter
     private String title = "intranda_administration_licences";
-    private List<Contract> contracts;
+    private transient List<Contract> contracts;
 
     @Override
     public PluginType getType() {
