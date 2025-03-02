@@ -3,7 +3,6 @@
 	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:x="http://myfaces.apache.org/tomahawk"
 	xmlns:intranda="http://xmlns.jcp.org/jsf/composite/compositesPG"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui"
@@ -52,7 +51,7 @@
 							</table:filter>
 							<table:table>
 								<!-- Table -->
-								<x:dataTable id="licences" styleClass="table table-hover table-nomargin dataTable table-bordered responsive"
+								<h:dataTable id="licences" styleClass="table table-hover table-nomargin dataTable table-bordered responsive"
 									var="item" value="#{AdministrationForm.administrationPlugin.contracts}">
 
 									<h:column>
@@ -62,21 +61,21 @@
 										<h:outputText value="#{item.name}" />
 									</h:column>
 
-									<x:column styleClass="tableColumnWidthLong">
+									<h:column styleClass="tableColumnWidthLong">
 										<f:facet name="header">
 											<h:outputText value="#{msgs.plugin_administration_licences_type}" />
 										</f:facet>
 										<h:outputText value="#{item.type}" />
-									</x:column>
+									</h:column>
 
-									<x:column styleClass="tableColumnWidthLong">
+									<h:column styleClass="tableColumnWidthLong">
 										<f:facet name="header">
 											<h:outputText value="#{msgs.plugin_administration_licences_ordernumber}" />
 										</f:facet>
 										<h:outputText value="#{item.ordernumber}" />
-									</x:column>
+									</h:column>
 
-									<x:column styleClass="tableColumnWidthMid">
+									<h:column styleClass="tableColumnWidthMid">
 										<f:facet name="header">
 											<h:outputText value="#{msgs.plugin_administration_licences_enabled}" />
 										</f:facet>
@@ -92,9 +91,9 @@
 												#{msgs.active}
 											</span>
 										</h:panelGroup>
-									</x:column>
+									</h:column>
 
-									<x:column styleClass="tableColumnMaxWidthLonger">
+									<h:column styleClass="tableColumnMaxWidthLonger">
 										<f:facet name="header">
 											<h:outputText value="#{msgs.plugin_administration_licences_usage}" />
 										</f:facet>
@@ -113,9 +112,9 @@
 													value="#{item.usedSize} #{msgs.of} #{item.size} - #{item.usedPercent}%" />
 											</div>
 										</div>
-									</x:column>
+									</h:column>
 
-								</x:dataTable>
+								</h:dataTable>
 							</table:table>
 						</table:wrapper>
 					</section:body>
