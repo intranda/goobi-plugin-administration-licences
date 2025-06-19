@@ -1,11 +1,15 @@
 package de.intranda.goobi.plugins;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Request;
@@ -19,6 +23,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import de.intranda.goobi.plugins.licence.Contract;
 import de.sub.goobi.config.ConfigPlugins;
+import de.sub.goobi.config.ConfigurationHelper;
 import de.sub.goobi.helper.Helper;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -64,17 +69,31 @@ public class LicencesAdministrationPlugin implements IAdministrationPlugin {
 
         // send a GET request to localhost
         try {
-            HttpResponse response;
-            response = Request.Get(url + "/contracts")
+
+            Request request = Request.Get(url + "/contracts")
                     .setHeader(HttpHeaders.AUTHORIZATION, "Basic " + auth)
                     .addHeader("accept", "application/json")
-                    .useExpectContinue()
-                    .execute()
+                    .useExpectContinue();
+            if (ConfigurationHelper.getInstance().isUseProxy()) {
+                try {
+                    URL urlToCheck = new URI(url).toURL();
+
+                    if (!ConfigurationHelper.getInstance().isProxyWhitelisted(urlToCheck.getHost())) {
+                        HttpHost proxy =
+                                new HttpHost(ConfigurationHelper.getInstance().getProxyUrl(), ConfigurationHelper.getInstance().getProxyPort());
+                        request = request.viaProxy(proxy);
+                    }
+                } catch (URISyntaxException e) {
+                    log.error(e);
+                }
+            }
+
+            HttpResponse response = request.execute()
                     .returnResponse();
 
             // if response code is 200 analyse the result
             if (response.getStatusLine().getStatusCode() == 200) {
-                contracts = new ArrayList<Contract>();
+                contracts = new ArrayList<>();
 
                 // get result as string and convert it into JSON object
                 String responseAsString = EntityUtils.toString(response.getEntity());
