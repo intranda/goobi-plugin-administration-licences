@@ -12,11 +12,11 @@ More information about the functionality of this plugin and the complete documen
 
 Detail                      | Description
 --------------------------- | ----------------------
-**Plugin identifier**       | -
+**Plugin identifier**       | intranda_administration_licences
 **Plugin type**             | administration
 **Licence**                 | GPL 2.0 or newer
-**Documentation (German)**  | This plugin is not yet documented.
-**Documentation (English)** | This plugin is not yet documented.
+**Documentation (German)**  | https://docs.goobi.io/workflow-plugins/v/ger/administration/goobi-plugin-administration-licences
+**Documentation (English)** | https://docs.goobi.io/workflow-plugins/v/eng/administration/goobi-plugin-administration-licences
 
 ## Goobi details
 
