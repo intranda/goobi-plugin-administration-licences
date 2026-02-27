@@ -9,6 +9,7 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:section="http://goobi.io/section"
 	xmlns:table="http://goobi.io/table"
+	xmlns:util="http://goobi.io/util"
 	>
 
 	<composite:interface>
@@ -31,10 +32,10 @@
 									jsf:id="reload"
 									pt:aria-label="#{msgs.reload}"
 									jsf:action="#{AdministrationForm.administrationPlugin.loadContracts}"
-									class="btn btn-mini"
+									class="btn btn-icon btn-mini"
 									title="#{msgs.reload}"
 									jsf:rel="tooltip">
-									<span class="fa fa-refresh font-white" />
+									<util:icon icon="refresh" styleClass="font-white icon--xl" />
 									<f:passThroughAttribute
 										name="data-toggle"
 										value="tooltip" />
@@ -80,13 +81,13 @@
 											<h:outputText value="#{msgs.plugin_administration_licences_enabled}" />
 										</f:facet>
 										<h:panelGroup  rendered="#{!item.enabled}"  class="badge badge-intranda-red my-auto">
-											<span class="fa fa-lock" />
+											<util:icon icon="lock" />
 											<span>
 												#{msgs.inactive}
 											</span>
 										</h:panelGroup>
 										<h:panelGroup class="badge badge-intranda-green my-auto" rendered="#{item.enabled}">
-											<span class="fa fa-unlock" />
+											<util:icon icon="lock-open" />
 											<span>
 												#{msgs.active}
 											</span>
