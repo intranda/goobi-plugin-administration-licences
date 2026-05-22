@@ -63,6 +63,10 @@ public class LicencesAdministrationPlugin implements IAdministrationPlugin {
      */
     public void loadContracts() {
         String url = ConfigPlugins.getPluginConfig(title).getString("url");
+        if (url == null || !url.startsWith("https://")) {
+            log.error("Licences plugin: URL must use HTTPS. Configured URL: {}", url);
+            return;
+        }
         String login = ConfigPlugins.getPluginConfig(title).getString("login");
         String password = ConfigPlugins.getPluginConfig(title).getString("password");
         String auth = Base64.getEncoder().encodeToString((login + ":" + password).getBytes());
