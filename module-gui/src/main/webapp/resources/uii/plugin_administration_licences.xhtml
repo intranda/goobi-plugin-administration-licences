@@ -17,7 +17,7 @@
 
 	<composite:implementation>
 		<h:panelGroup>
-			<util:missing-rights rights="Plugin_administration_licences" rendered="true" />
+			<util:missing-rights rights="Plugin_administration_licences" />
 			<ui:fragment rendered="#{LoginForm.hasRole('Plugin_administration_licences')}">
 				<section:section type="neutral">
 					<section:header icon="plug" title="#{msgs[AdministrationForm.administrationPlugin.title]}">
